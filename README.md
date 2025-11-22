@@ -49,5 +49,3 @@ npm run dev
 - All pages can be found in the `pages/` folder.
 - Make sure to update environment variables with your own credentials for proper functioning.
 
----
-This README was updated to reflect the current project status and version control setup.
