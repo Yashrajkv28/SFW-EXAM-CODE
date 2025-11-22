@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Firebase Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Roboto Flex"', 'sans-serif'],
+            },
+            colors: {
+              'background': '#F9F9FF', // Slightly off-white
+              'surface': '#FFFBFF',
+              'primary': '#6750A4',
+              'on-primary': '#FFFFFF',
+              'primary-container': '#EADDFF',
+              'on-primary-container': '#21005D',
+              'secondary-container': '#E8DEF8',
+              'on-secondary-container': '#1D192B',
+              'tertiary': '#7D5260',
+              'on-tertiary': '#FFFFFF',
+              'tertiary-container': '#FFD8E4',
+              'on-tertiary-container': '#31111D',
+              'error-container': '#F9DEDC',
+              'on-error-container': '#410E0B',
+              'text-primary': '#1D1B20',
+              'text-secondary': '#49454F',
+              'outline': '#79747E',
+              'outline-variant': '#CAC4D0',
+              dark: {
+                'background': '#121212', // Darker background
+                'surface': '#1C1B1F',
+                'primary': '#D0BCFF',
+                'on-primary': '#381E72',
+                'primary-container': '#4F378B',
+                'on-primary-container': '#EADDFF',
+                'secondary-container': '#4A4458',
+                'on-secondary-container': '#E8DEF8',
+                'tertiary': '#EFB8C8',
+                'on-tertiary': '#492532',
+                'tertiary-container': '#633B48',
+                'on-tertiary-container': '#FFD8E4',
+                'error-container': '#93000A',
+                'on-error-container': '#F9DEDC',
+                'text-primary': '#E6E1E5',
+                'text-secondary': '#CAC4D0',
+                'outline': '#938F99',
+                'outline-variant': '#49454F',
+              }
+            },
+            borderRadius: {
+              'xl': '1rem',
+              '2xl': '1.25rem',
+              '3xl': '1.5rem',
+              '4xl': '2rem',
+            },
+            boxShadow: {
+              'glow-primary': '0 0 20px 0px #6750A4',
+              'glow-primary-dark': '0 0 20px 0px #D0BCFF',
+              'glow-green': '0 0 15px 0px #4ade80',
+              'glow-yellow': '0 0 15px 0px #facc15',
+            },
+            animation: {
+              'fade-in-up': 'fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'click-bounce': 'click-bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              'm3-loader': 'm3-loader 1s cubic-bezier(0.65, 0, 0.35, 1) infinite',
+              'aurora': 'aurora 20s linear infinite',
+            },
+            keyframes: {
+              'fade-in-up': {
+                '0%': { opacity: '0', transform: 'translateY(24px) scale(0.98)' },
+                '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+              },
+              'click-bounce': {
+                '0%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(0.9)' },
+                '100%': { transform: 'scale(1)' },
+              },
+              'm3-loader': {
+                '0%': { transform: 'rotate(0deg) scaleX(1)' },
+                '50%': { transform: 'rotate(180deg) scaleX(1.5)' },
+                '100%': { transform: 'rotate(360deg) scaleX(1)' },
+              },
+              'aurora': {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      .gradient-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+    <script>
+      // Prevents flash of wrong theme
+      if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.remove('dark')
+      } else {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background text-text-primary dark:bg-dark-background dark:text-dark-text-primary font-sans transition-colors duration-300 relative overflow-x-hidden">
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+      <div class="absolute inset-[-100px] opacity-20 dark:opacity-40">
+        <div class="absolute inset-0 bg-[conic-gradient(from_90deg_at_50%_50%,#EADDFF_0%,#6750A4_50%,#FFD8E4_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#4F378B_0%,#D0BCFF_50%,#633B48_100%)] animate-aurora filter blur-3xl"></div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
